@@ -73,26 +73,52 @@ class LFAssetCell: UICollectionViewCell {
             return
         }
         
+        print(representedAssetIdentifier)
+        
         _ = LFImageManager.manager.getPhotoWithAsset(asset: asset, photoWidth: self.bounds.size.width ){ (photo, _, _) in
             
-            if representedAssetIdentifier == LFImageManager.manager.getAssetIdentifier(asset: asset) {
-                
-                self.imageView?.image = photo
-                
-            }
-            else
-            {
-                PHImageManager.default().cancelImageRequest(self.imageRequestID!)
-            }
-            
-            
             DispatchQueue.main.async(execute: {
+                
+                
+                if representedAssetIdentifier == LFImageManager.manager.getAssetIdentifier(asset: asset) {
+                    
+                    self.imageView?.image = photo
+                }
+                else
+                {
+                    PHImageManager.default().cancelImageRequest(self.imageRequestID!)
+                }
                 
             })
         }
     }
     
+}
+
+class LFCameraCell: UICollectionViewCell {
     
+    lazy var imageView = UIImageView()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupUI()
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupUI() {
+        backgroundColor = UIColor.white
+        clipsToBounds = true
+        
+        imageView.frame = self.bounds
+        imageView.contentMode = .scaleAspectFill
+        imageView.image = Bundle.lf_image(named: "takePicture@2x.png")
+        addSubview(imageView)
+    }
 }
 
 class LFAlbumCell: UITableViewCell {

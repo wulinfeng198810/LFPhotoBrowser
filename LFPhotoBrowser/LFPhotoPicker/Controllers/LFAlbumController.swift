@@ -56,6 +56,8 @@ class LFAlbumController:UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        reloadDatas()
     }
     
     

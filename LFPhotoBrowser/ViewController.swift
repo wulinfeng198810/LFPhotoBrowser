@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     
     @IBAction func camera(_ sender: Any) {
     
-        let imagePickerNav = LFImagePickerNavgationController(maxImagesCount: 1, columnNumber: 4, delegate: nil, pushPhotoPickerVC: true)
+        let imagePickerNav = LFImagePickerNavgationController(maxImagesCount: 1, columnNumber: 3, delegate: nil, pushPhotoPickerVC: true)
         self.present(imagePickerNav, animated: true, completion: nil)
     }
     

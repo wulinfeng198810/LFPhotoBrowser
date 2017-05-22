@@ -29,7 +29,7 @@ class LFImageManager: NSObject {
     var columnNumber:Int = 3
     
     /// Sort photos ascending by modificationDate，Default is YES
-    /// 对照片排序，按修改时间升序，默认是YES。如果设置为NO,最新的照片会显示在最前面，内部的拍照按钮会排在第一个
+    /// 对照片排序，按修改时间升序，默认是true。如果设置为false,最新的照片会显示在最前面，内部的拍照按钮会排在第一个
     var sortAscendingByModificationDate:Bool = true
     
     /// Minimum selectable photo width, Default is 0
@@ -175,7 +175,11 @@ class LFImageManager: NSObject {
 // MARK: - Export video
 extension LFImageManager {
 
-    fileprivate func isCameraRollAlbum(albumName:String) -> Bool{
+    func isCameraRollAlbum(albumName:String?) -> Bool{
+        
+        guard let albumName = albumName else {
+            return false
+        }
         
         // 目前已知8.0.0 - 8.0.2系统，拍照后的图片会保存在最近添加中
         var versionStr:String = UIDevice.current.systemVersion.replacingOccurrences(of: ".", with: "")
@@ -327,6 +331,22 @@ extension LFImageManager {
         
         _ = LFImageManager.manager.getPhotoWithAsset(asset: ast, photoWidth: 80) { (img, _, _) in
             completeHandler(img)
+        }
+    }
+    
+    func savePhoto(withImage image:UIImage, completeHandler:@escaping (_ success:Bool, _ error:Error?)->()) {
+        
+        if #available(iOS 9.0, *) {
+            PHPhotoLibrary.shared().performChanges({
+                let options = PHAssetResourceCreationOptions()
+                options.shouldMoveFile = true
+                PHAssetCreationRequest.creationRequestForAsset(from: image)
+                
+            }, completionHandler: { (success:Bool, error:Error?) in
+                completeHandler(success, error)
+            })
+        } else {
+            // Fallback on earlier versions
         }
     }
 }

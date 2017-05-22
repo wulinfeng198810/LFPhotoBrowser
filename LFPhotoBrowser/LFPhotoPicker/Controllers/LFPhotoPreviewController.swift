@@ -43,6 +43,7 @@ class LFPhotoPreviewController: UIViewController {
         collectionView = UICollectionView.init(frame: self.view.bounds, collectionViewLayout: flow)
         collectionView?.backgroundColor = UIColor.white
         collectionView?.isPagingEnabled = true
+        collectionView?.showsHorizontalScrollIndicator = false
         collectionView?.dataSource = self
         collectionView?.delegate = self
         collectionView?.register(LFPhotoPreviewCell.self, forCellWithReuseIdentifier: kLFPhotoPreviewCell)

@@ -53,7 +53,7 @@ class LFImagePickerNavgationController: UINavigationController {
     
     /// Sort photos ascending by modificationDate，Default is true
     /// 对照片排序，按修改时间升序，默认是true。如果设置为false,最新的照片会显示在最前面，内部的拍照按钮会排在第一个
-    var sortAscendingByModificationDate:Bool = false
+    var sortAscendingByModificationDate:Bool = true
     
     /// Default is 828px / 默认828像素宽
     var photoWidth:CGFloat = 828
@@ -83,7 +83,7 @@ class LFImagePickerNavgationController: UINavigationController {
     
     /// Default is true, if set false, user can't take picture.
     /// 默认为true，如果设置为false,拍照按钮将隐藏,用户将不能选择照片
-    var allowTakePicture:Bool = false
+    var allowTakePicture:Bool = true
     
     /// Default is true, if set false, user can't preview photo.
     /// 默认为true，如果设置为false,预览按钮将隐藏,用户将不能去预览照片
@@ -173,8 +173,11 @@ class LFImagePickerNavgationController: UINavigationController {
         
         super.init(rootViewController: albumVC)
         
-        
         self.pickerDelegate = delegate
+        self.sortAscendingByModificationDate = false
+        
+        LFImageManager.manager.sortAscendingByModificationDate = sortAscendingByModificationDate
+        LFImageManager.manager.columnNumber = columnNumber
         
         if LFImageManager.manager.authorizationStatusAuthorized() == false {
             addAuthorView()
