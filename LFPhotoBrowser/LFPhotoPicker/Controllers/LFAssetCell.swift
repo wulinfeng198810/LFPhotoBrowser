@@ -63,34 +63,37 @@ class LFAssetCell: UICollectionViewCell {
     
     func reloadCell() {
         
-        guard let asset = model?.asset else {
+        guard let asset = self.model?.asset else {
             return
         }
         
         self.representedAssetIdentifier = LFImageManager.manager.getAssetIdentifier(asset: asset)
         
-        guard let representedAssetIdentifier = self.representedAssetIdentifier else {
-            return
-        }
+        print(self.representedAssetIdentifier!)
         
-        print(representedAssetIdentifier)
-        
-        _ = LFImageManager.manager.getPhotoWithAsset(asset: asset, photoWidth: self.bounds.size.width ){ (photo, _, _) in
+        let imgReqID = LFImageManager.manager.getPhotoWithAsset(asset: asset, photoWidth: self.bounds.size.width ){ (photo, _, isDegraded:Bool) in
             
-            DispatchQueue.main.async(execute: {
-                
-                
-                if representedAssetIdentifier == LFImageManager.manager.getAssetIdentifier(asset: asset) {
-                    
-                    self.imageView?.image = photo
-                }
-                else
-                {
-                    PHImageManager.default().cancelImageRequest(self.imageRequestID!)
-                }
-                
-            })
+            guard let representedAssetIdentifier = self.representedAssetIdentifier else {
+                return
+            }
+            
+            if representedAssetIdentifier == LFImageManager.manager.getAssetIdentifier(asset: asset) {
+                self.imageView?.image = photo
+            } else {
+                PHImageManager.default().cancelImageRequest(self.imageRequestID!)
+            }
+            
+            if (!isDegraded) {
+                self.imageRequestID = 0;
+            }
         }
+        
+        if let imageRequestID = self.imageRequestID {
+            if imageRequestID != 0 && imgReqID != imageRequestID {
+                PHImageManager.default().cancelImageRequest(imageRequestID)
+            }
+        }
+        self.imageRequestID = imgReqID
     }
     
 }

@@ -18,7 +18,10 @@ class LFAlbumController:UIViewController {
     lazy var tableView:UITableView = {
         
         let frame = CGRect(x: 0, y: 0, width: self.view.lf_width(), height: self.view.lf_height())
+        
         let tabView = UITableView(frame: frame, style: .plain)
+        tabView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0)
+        tabView.scrollIndicatorInsets = UIEdgeInsetsMake(64, 0, 0, 0)
         tabView.rowHeight = 70
         tabView.delegate = self
         tabView.dataSource = self
@@ -30,6 +33,8 @@ class LFAlbumController:UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        automaticallyAdjustsScrollViewInsets = false
         
         let imagePickerNAV = navigationController as! LFImagePickerNavgationController
         
@@ -49,6 +54,7 @@ class LFAlbumController:UIViewController {
                             style: .plain,
                             target: nil,
                             action: nil)
+        
         view.addSubview(tableView)
         
         reloadDatas()

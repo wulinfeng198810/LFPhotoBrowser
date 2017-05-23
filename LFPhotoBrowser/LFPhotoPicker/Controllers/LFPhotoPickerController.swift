@@ -16,7 +16,6 @@ private let kLFCameraCell = "LFCameraCell"
 /// 缩略图
 class LFPhotoPickerController: UIViewController {
 
-    
     var isFirstAppear:Bool = true
     var columnNumber:Int = LFImageManager.manager.columnNumber
     var albumModel:LFAlbumModel?
@@ -30,6 +29,8 @@ class LFPhotoPickerController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        automaticallyAdjustsScrollViewInsets = false
         
         navigationItem.title = albumModel?.name
         let imagePickerNAV = navigationController as! LFImagePickerNavgationController
@@ -50,6 +51,8 @@ class LFPhotoPickerController: UIViewController {
         configCollectionView()
     }
     
+    
+    
     private func configCollectionView() {
         let flow = UICollectionViewFlowLayout()
         
@@ -61,6 +64,8 @@ class LFPhotoPickerController: UIViewController {
         flow.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
         
         collectionView = UICollectionView.init(frame: self.view.bounds, collectionViewLayout: flow)
+        collectionView?.contentInset = UIEdgeInsetsMake(64, 0, 0, 0)
+        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(64, 0, 0, 0)
         collectionView?.backgroundColor = UIColor.white
         collectionView?.dataSource = self
         collectionView?.delegate = self
@@ -115,6 +120,9 @@ class LFPhotoPickerController: UIViewController {
         
         func cameraAction() {
             let sysCameraVC = UIImagePickerController()
+            
+            sysCameraVC.navigationBar.barTintColor = self.navigationController?.navigationBar.barTintColor
+            sysCameraVC.navigationBar.tintColor = self.navigationController?.navigationBar.tintColor
             sysCameraVC.sourceType = .camera
             sysCameraVC.cameraDevice = .rear
             sysCameraVC.delegate = self
@@ -183,6 +191,9 @@ extension LFPhotoPickerController:UICollectionViewDelegate, UICollectionViewData
         }
         
         // asset cell
+        
+        
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kLFAssetCell, for: indexPath) as! LFAssetCell
         
         cell.backgroundColor = UIColor.lightGray
@@ -192,6 +203,8 @@ extension LFPhotoPickerController:UICollectionViewDelegate, UICollectionViewData
         } else {
             cell.model = modelArray?[indexPath.row - 1]
         }
+        
+//        print("---cell\n",cell, cell.model, indexPath.row)
         
         return cell
     }
@@ -228,6 +241,7 @@ extension LFPhotoPickerController:UICollectionViewDelegate, UICollectionViewData
 extension LFPhotoPickerController:UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
         picker.dismiss(animated: true, completion: nil)
         
         guard let type = info[UIImagePickerControllerMediaType] as? NSString,

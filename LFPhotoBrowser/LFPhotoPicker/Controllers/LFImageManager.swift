@@ -303,13 +303,30 @@ extension LFImageManager {
         option.resizeMode = .fast
         return PHImageManager.default().requestImage(for: asset, targetSize: imageSize, contentMode: .aspectFill, options: option) { (result:UIImage?, info:[AnyHashable : Any]?) in
             
-            if let ret = result {
-                let fixResult = ret.fixOrientation()
-                completion?(fixResult, info, false)
+            var _downloadFinined:Bool = true
+            var _isDegrade:Bool = false
+            if let isDegrade = info?[PHImageResultIsDegradedKey] as? Bool {
+                _isDegrade = isDegrade
             }
-            else
-            {
-                completion?(result, info, true)
+            
+            if let cancelled = info?[PHImageCancelledKey] as? Bool {
+                if cancelled == true {
+                    _downloadFinined = false
+                }
+                
+            }
+            
+            if let error = info?[PHImageErrorKey] as? Bool {
+                if error == true {
+                    _downloadFinined = false
+                }
+            }
+            
+            if let ret = result {
+                if _downloadFinined == true {
+                    let fixResult = ret.fixOrientation()
+                    completion?(fixResult, info, _isDegrade)
+                }
             }
         }
     }

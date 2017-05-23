@@ -20,13 +20,20 @@ class LFPhotoPreviewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        automaticallyAdjustsScrollViewInsets = false
+        
         configCollectionView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        navigationController?.setNavigationBarHidden(true, animated: true)
         collectionView?.setContentOffset(CGPoint(x:view.lf_width() * CGFloat(currentIndex),y:0), animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     private func configCollectionView() {
@@ -38,7 +45,6 @@ class LFPhotoPreviewController: UIViewController {
         flow.minimumLineSpacing = 0.1
         flow.minimumInteritemSpacing = 0.1
         flow.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
-        
         
         collectionView = UICollectionView.init(frame: self.view.bounds, collectionViewLayout: flow)
         collectionView?.backgroundColor = UIColor.white
