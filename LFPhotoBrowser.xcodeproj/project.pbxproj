@@ -22,6 +22,7 @@
 		B35E2C5A1ECEE7A6000BCEA3 /* LFPhotoPreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35E2C591ECEE7A6000BCEA3 /* LFPhotoPreviewController.swift */; };
 		B35E2C5C1ECEEB55000BCEA3 /* LFPhotoPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35E2C5B1ECEEB55000BCEA3 /* LFPhotoPreviewCell.swift */; };
 		B35E2C5E1ECEEB7D000BCEA3 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = B35E2C5D1ECEEB7D000BCEA3 /* 2.png */; };
+		B35E2C651ED44CFD000BCEA3 /* UIImage+EPCCompressExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35E2C641ED44CFD000BCEA3 /* UIImage+EPCCompressExtentions.swift */; };
 		B386F37B1ECC3F27000B2189 /* LFAssetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B386F37A1ECC3F27000B2189 /* LFAssetCell.swift */; };
 		B3A8BB861EC9415D0026BB98 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A8BB851EC9415D0026BB98 /* AppDelegate.swift */; };
 		B3A8BB881EC9415D0026BB98 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A8BB871EC9415D0026BB98 /* ViewController.swift */; };
@@ -70,6 +71,7 @@
 		B35E2C591ECEE7A6000BCEA3 /* LFPhotoPreviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LFPhotoPreviewController.swift; sourceTree = "<group>"; };
 		B35E2C5B1ECEEB55000BCEA3 /* LFPhotoPreviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LFPhotoPreviewCell.swift; sourceTree = "<group>"; };
 		B35E2C5D1ECEEB7D000BCEA3 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		B35E2C641ED44CFD000BCEA3 /* UIImage+EPCCompressExtentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+EPCCompressExtentions.swift"; sourceTree = "<group>"; };
 		B386F37A1ECC3F27000B2189 /* LFAssetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LFAssetCell.swift; sourceTree = "<group>"; };
 		B3A8BB821EC9415D0026BB98 /* LFPhotoBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LFPhotoBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3A8BB851EC9415D0026BB98 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				B35E2C081ECE9871000BCEA3 /* Bundle+LFExtentsions.swift */,
 				B35E2C091ECE9871000BCEA3 /* Bundle+LFImagePicker.swift */,
 				B35E2C0A1ECE9871000BCEA3 /* UIView+LFExtensions.swift */,
+				B35E2C641ED44CFD000BCEA3 /* UIImage+EPCCompressExtentions.swift */,
 			);
 			path = Swift_Tools;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 				B35E2BB41ECD4531000BCEA3 /* LFImagePickerNavgationController.swift in Sources */,
 				B3A8BB861EC9415D0026BB98 /* AppDelegate.swift in Sources */,
 				B34E0DF31ECAEB59009EAA18 /* LFAssetModel.swift in Sources */,
+				B35E2C651ED44CFD000BCEA3 /* UIImage+EPCCompressExtentions.swift in Sources */,
 				B34E0DF11ECAE71C009EAA18 /* LFImageManager.swift in Sources */,
 				B35E2C0D1ECE9871000BCEA3 /* Bundle+LFImagePicker.swift in Sources */,
 				B35E2C581ECEE6BB000BCEA3 /* LFPhotoPreviewView.swift in Sources */,

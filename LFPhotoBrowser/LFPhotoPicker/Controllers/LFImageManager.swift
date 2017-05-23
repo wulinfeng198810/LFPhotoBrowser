@@ -330,6 +330,42 @@ extension LFImageManager {
             }
         }
     }
+    
+    func getOriginalPhoto(withAsset asset:PHAsset, isCompress:Bool = false, completion:((_ photo:UIImage?, _ info:[AnyHashable : Any]?)->())?) {
+        
+        let option = PHImageRequestOptions()
+        option.isNetworkAccessAllowed = false
+        
+        _ = PHImageManager.default().requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: .aspectFit, options: option) { (result:UIImage?, info:[AnyHashable : Any]?) in
+            
+            var _downloadFinined:Bool = true
+            
+            if let cancelled = info?[PHImageCancelledKey] as? Bool {
+                if cancelled == true {
+                    _downloadFinined = false
+                }
+            }
+            
+            if let error = info?[PHImageErrorKey] as? Bool {
+                if error == true {
+                    _downloadFinined = false
+                }
+            }
+            
+            if let ret = result {
+                if _downloadFinined == true {
+                    var fixResult = ret.fixOrientation()
+                    if isCompress {
+                        fixResult = fixResult?.compress()
+                    }
+                    completion?(fixResult, info)
+                    return
+                }
+            }
+            
+            completion?(nil, info)
+        }
+    }
 }
 
 // MARK: - Get postImage / 获取封面图

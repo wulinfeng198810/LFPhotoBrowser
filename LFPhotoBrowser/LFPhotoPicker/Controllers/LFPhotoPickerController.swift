@@ -259,8 +259,6 @@ extension LFPhotoPickerController:UIImagePickerControllerDelegate, UINavigationC
                 }
             })
         }
-        
-    
     }
     
 }

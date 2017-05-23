@@ -9,8 +9,10 @@
 import UIKit
 import Photos
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, LFImagePickerNavgationControllerDelegate {
 
+    @IBOutlet weak var imgView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -18,7 +20,7 @@ class ViewController: UIViewController {
     
     @IBAction func camera(_ sender: Any) {
     
-        let imagePickerNav = LFImagePickerNavgationController(maxImagesCount: 1, columnNumber: 3, delegate: nil, pushPhotoPickerVC: true)
+        let imagePickerNav = LFImagePickerNavgationController(maxImagesCount: 1, columnNumber: 3, delegate: self, pushPhotoPickerVC: true)
         self.present(imagePickerNav, animated: true, completion: nil)
     }
     
@@ -33,6 +35,16 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    func imagePickerController(_ picker: LFImagePickerNavgationController, didFinishPickingPhoto photo: UIImage) {
+        imgView.image = photo
+        picker.dismiss(animated: true, completion: nil)
+        
+        print(photo)
+    }
+    
+    func imagePickerControllerCancel(_ picker: LFImagePickerNavgationController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
 }
 

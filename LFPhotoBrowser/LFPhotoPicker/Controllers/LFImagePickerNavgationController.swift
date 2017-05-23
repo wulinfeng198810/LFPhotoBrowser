@@ -31,8 +31,14 @@ import UIKit
 import Photos
 
 
-protocol LFImagePickerNavgationControllerDelegate {
-    func imagePickerController(didFinishPickingPhotos photos:Array<UIImage>)
+protocol LFImagePickerNavgationControllerDelegate: NSObjectProtocol {
+//    func imagePickerController(didFinishPickingPhotos photos:Array<UIImage>)
+    
+    // selected a photo
+    func imagePickerController(_ picker: LFImagePickerNavgationController, didFinishPickingPhoto photo:UIImage)
+    
+    // cancel
+    func imagePickerControllerCancel(_ picker: LFImagePickerNavgationController)
 }
 
 class LFImagePickerNavgationController: UINavigationController {
@@ -91,7 +97,7 @@ class LFImagePickerNavgationController: UINavigationController {
     
     /// Default is true, if set false, the picker don't dismiss itself.
     /// 默认为true，如果设置为false, 选择器将不会自己dismiss
-    var autoDismiss:Bool = true
+    var autoDismiss:Bool = false
     
     /// The photos user have selected
     /// 用户选中过的图片数组
@@ -259,6 +265,17 @@ class LFImagePickerNavgationController: UINavigationController {
     }
     
     public func cancelButtonClick() {
+        
+        if autoDismiss {
+            dismiss(animated: true) {
+                
+            }
+        }
+        
+        self.pickerDelegate?.imagePickerControllerCancel(self)
+    }
+    
+    public func imagePickerDismiss() {
         if autoDismiss {
             dismiss(animated: true) {
                 
