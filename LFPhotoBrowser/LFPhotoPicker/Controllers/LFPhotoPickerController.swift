@@ -191,9 +191,6 @@ extension LFPhotoPickerController:UICollectionViewDelegate, UICollectionViewData
         }
         
         // asset cell
-        
-        
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kLFAssetCell, for: indexPath) as! LFAssetCell
         
         cell.backgroundColor = UIColor.lightGray
@@ -203,8 +200,6 @@ extension LFPhotoPickerController:UICollectionViewDelegate, UICollectionViewData
         } else {
             cell.model = modelArray?[indexPath.row - 1]
         }
-        
-//        print("---cell\n",cell, cell.model, indexPath.row)
         
         return cell
     }
@@ -217,14 +212,13 @@ extension LFPhotoPickerController:UICollectionViewDelegate, UICollectionViewData
         // take a photo / 去拍照
         let imagePickerNAV = self.navigationController as! LFImagePickerNavgationController
         
-        if (imagePickerNAV.sortAscendingByModificationDate && indexPath.row >= mCount) ||
-            (!imagePickerNAV.sortAscendingByModificationDate && indexPath.row == 0) {
+        if ((imagePickerNAV.sortAscendingByModificationDate && indexPath.row >= mCount) ||
+            (!imagePickerNAV.sortAscendingByModificationDate && indexPath.row == 0)  && _showTakePhotoBtn) {
             camera()
             return
         }
         
         // preview phote or video / 预览照片或视频
-        
         var index = indexPath.row;
         if (!imagePickerNAV.sortAscendingByModificationDate && _showTakePhotoBtn) {
             index = indexPath.row - 1;
