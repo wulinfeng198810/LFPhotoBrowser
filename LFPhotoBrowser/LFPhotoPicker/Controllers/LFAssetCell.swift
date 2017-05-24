@@ -119,7 +119,7 @@ class LFCameraCell: UICollectionViewCell {
         
         imageView.frame = self.bounds
         imageView.contentMode = .scaleAspectFill
-        imageView.image = Bundle.lf_image(named: "takePicture@2x.png")
+        imageView.image = Bundle.lf_image(named: "takePicture")
         addSubview(imageView)
     }
 }

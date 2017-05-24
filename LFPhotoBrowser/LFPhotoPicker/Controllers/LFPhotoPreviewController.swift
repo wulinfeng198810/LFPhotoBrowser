@@ -80,7 +80,7 @@ class LFPhotoPreviewController: UIViewController {
                                             alpha: 0.7)
     
         _backButton = UIButton(frame: CGRect(x: 10, y: 10, width: 44, height: 44))
-        _backButton?.setImage(Bundle.lf_image(named: "navi_back@2x.png"), for: .normal)
+        _backButton?.setImage(Bundle.lf_image(named: "navi_back"), for: .normal)
         _backButton?.setTitleColor(UIColor.white, for: .normal)
         _backButton?.addTarget(self, action: #selector(backButtonClick), for: .touchUpInside)
         
@@ -111,8 +111,8 @@ class LFPhotoPreviewController: UIViewController {
         _originalPhotoButton?.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         _originalPhotoButton?.setTitleColor(UIColor.lightGray, for: .normal)
         _originalPhotoButton?.setTitleColor(UIColor.white, for: .selected)
-        _originalPhotoButton?.setImage(Bundle.lf_image(named: "photo_original_def@2x.png"), for: .normal)
-        _originalPhotoButton?.setImage(Bundle.lf_image(named: "photo_original_sel@2x.png"), for: .selected)
+        _originalPhotoButton?.setImage(Bundle.lf_image(named: "photo_original_def"), for: .normal)
+        _originalPhotoButton?.setImage(Bundle.lf_image(named: "photo_original_sel"), for: .selected)
         _originalPhotoButton?.addTarget(self, action: #selector(originalPhotoButtonClick), for: .touchUpInside)
         
         _doneButton = UIButton(type: .system)

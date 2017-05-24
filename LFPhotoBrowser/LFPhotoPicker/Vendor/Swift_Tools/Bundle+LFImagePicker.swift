@@ -9,6 +9,7 @@
 import Foundation
 
 
+/// LFImagePicker.bundle 国际化／图片等资源获取
 extension Bundle {
     
     static var lf_imagePickerBundle:Bundle? {
@@ -53,19 +54,23 @@ extension Bundle {
         let v = localizedStrBundle?.localizedString(forKey: forKey,
                                                     value: value,
                                                     table: nil)
+        
+        if v == nil {
+            assert(false, "no such localizedString in LFImagePicker.bundle")
+        }
+        
         return v
     }
     
     
     class func lf_image(named:String) -> UIImage? {
         
-        let imgBundlePath = lf_imagePickerBundle?.path(forResource: named,
-                                                                ofType: nil)
+        let img = UIImage(named: named, in: lf_imagePickerBundle, compatibleWith: nil)
         
-        guard let _imgBundlePath = imgBundlePath else {
-            return nil
+        if img == nil {
+            assert(false, "no such image in LFImagePicker.bundle")
         }
-        
-        return UIImage(contentsOfFile: _imgBundlePath)
+
+        return img
     }
 }
