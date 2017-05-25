@@ -30,7 +30,6 @@
 import UIKit
 import Photos
 
-
 protocol LFImagePickerNavgationControllerDelegate: NSObjectProtocol {
 //    func imagePickerController(didFinishPickingPhotos photos:Array<UIImage>)
     

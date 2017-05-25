@@ -10,6 +10,9 @@ import UIKit
 
 private let kLFPhotoPreviewCell = "LFPhotoPreviewCell"
 
+
+/// preview
+/// 预览,采用 collectionView
 class LFPhotoPreviewController: UIViewController {
 
     var currentIndex:Int = 0

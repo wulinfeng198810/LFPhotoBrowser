@@ -214,9 +214,7 @@
 			children = (
 				B335E17D1ECC2E0F0032F0C3 /* Constants.swift */,
 				B35E2C031ECE9871000BCEA3 /* Vendor */,
-				B3A8BBC31EC99EC90026BB98 /* Models */,
 				B3A8BBC21EC99EC90026BB98 /* Controllers */,
-				B3A8BBC41EC99EC90026BB98 /* Views */,
 				B35E2BB71ECD5D39000BCEA3 /* LFImagePicker.bundle */,
 			);
 			path = LFPhotoPicker;
@@ -236,20 +234,6 @@
 				B35E2C5B1ECEEB55000BCEA3 /* LFPhotoPreviewCell.swift */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		B3A8BBC31EC99EC90026BB98 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		B3A8BBC41EC99EC90026BB98 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -11,6 +11,7 @@ import UIKit
 private let kLFAlbumCell = "LFAlbumCell"
 
 /// album list
+/// 相册列表
 class LFAlbumController:UIViewController {
     
     var albumArr:Array<LFAlbumModel>?
