@@ -137,6 +137,16 @@ class LFPhotoPreviewController: UIViewController {
     
     func editPhotoButtonClick() {
         
+        let asset = albumModel?.models?[currentIndex].asset
+        LFImageManager.manager.getOriginalPhoto(withAsset: asset!, isCompress:!_originalPhotoButton!.isSelected) { (photo, info) in
+            if photo != nil {
+                let editor = CLImageEditor(image: photo!)
+                self.navigationController?.pushViewController(editor!, animated: true)
+                
+//                let nav = self.navigationController as! LFImagePickerNavgationController
+//                nav.pickerDelegate?.imagePickerController(nav, didFinishPickingPhoto: photo!)
+            }
+        }
     }
     
     func originalPhotoButtonClick() {

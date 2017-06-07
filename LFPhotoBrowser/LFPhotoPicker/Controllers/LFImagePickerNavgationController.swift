@@ -121,6 +121,8 @@ class LFImagePickerNavgationController: UINavigationController {
     var tipLabel:UILabel?
     var settingBtn:UIButton?
     
+    var pickerDelegate:LFImagePickerNavgationControllerDelegate?
+    
     var takePictureImageName = "takePicture"
     var photoSelImageName = "photo_sel_photoPickerVc"
     var photoDefImageName = "photo_def_photoPickerVc"
@@ -144,8 +146,6 @@ class LFImagePickerNavgationController: UINavigationController {
     var fullImageBtnTitleStr = Bundle.lf_localizedString(forKey: "Full image")
     var settingBtnTitleStr = Bundle.lf_localizedString(forKey: "Setting")
     var processHintStr = Bundle.lf_localizedString(forKey: "Processing...")
-    
-    var pickerDelegate:LFImagePickerNavgationControllerDelegate?
     
     // MARK: - life cycle
     override func viewDidLoad() {
@@ -272,6 +272,11 @@ class LFImagePickerNavgationController: UINavigationController {
         }
         
         self.pickerDelegate?.imagePickerControllerCancel(self)
+    }
+    
+    public func done(image:UIImage) {
+        self.pickerDelegate?.imagePickerController(self, didFinishPickingPhoto: image)
+        imagePickerDismiss()
     }
     
     public func imagePickerDismiss() {

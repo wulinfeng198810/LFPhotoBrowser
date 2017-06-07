@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D30" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,9 +21,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dp2-Vw-BOd">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dp2-Vw-BOd">
                                 <rect key="frame" x="304" y="617" width="55" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="55" id="Se0-y4-4lt"/>
+                                    <constraint firstAttribute="height" constant="30" id="eRk-xx-qCZ"/>
+                                </constraints>
                                 <state key="normal" title="相机"/>
                                 <connections>
                                     <action selector="camera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hZW-h2-sRA"/>
@@ -37,6 +40,8 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="5Yw-05-e0L" secondAttribute="bottom" constant="73" id="5Sq-az-BjA"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dp2-Vw-BOd" secondAttribute="bottom" constant="20" id="Czn-2G-sxG"/>
+                            <constraint firstAttribute="trailing" secondItem="dp2-Vw-BOd" secondAttribute="trailing" constant="16" id="R4D-AY-lUR"/>
                             <constraint firstItem="5Yw-05-e0L" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="RFA-L0-hOk"/>
                             <constraint firstAttribute="trailing" secondItem="5Yw-05-e0L" secondAttribute="trailing" id="crd-qV-IKd"/>
                             <constraint firstItem="5Yw-05-e0L" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="iMq-4w-8fS"/>
@@ -48,7 +53,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="180" y="109.29535232383809"/>
+            <point key="canvasLocation" x="-238" y="87"/>
         </scene>
     </scenes>
 </document>

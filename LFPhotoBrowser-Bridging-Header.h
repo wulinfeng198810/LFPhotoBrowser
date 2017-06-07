@@ -3,3 +3,4 @@
 //
 
 #import "UIImage+LFPhotoExtentions.h"
+#import "CLImageEditor.h"
